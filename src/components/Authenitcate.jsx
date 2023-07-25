@@ -1,9 +1,7 @@
 import { useState } from "react";
-
-export default function Authenticate({ token }) {
+export default function Authenticate({token}) {
   const [successMessage, setSuccessMessage] = useState(null);
   const [error, setError] = useState(null);
-
   async function handleClick() {
     try {
       const response = await fetch(
@@ -17,6 +15,7 @@ export default function Authenticate({ token }) {
         }
       );
       const result = await response.json();
+      console.log(result);
       setSuccessMessage(result.message);
     } catch (error) {
       setError(error.message);
